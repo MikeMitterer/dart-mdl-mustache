@@ -1,10 +1,6 @@
 import 'package:unittest/unittest.dart';
 
-import 'package:mdlmustache/src/node.dart';
-import 'package:mdlmustache/src/parser.dart';
-import 'package:mdlmustache/src/lexer.dart';
-import 'package:mdlmustache/src/template_exception.dart';
-import 'package:mdlmustache/src/token.dart';
+import 'package:mdlmustache/mustache.dart';
 
 main() {
   group('Scanner', () {

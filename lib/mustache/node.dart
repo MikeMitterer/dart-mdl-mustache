@@ -1,4 +1,4 @@
-library mustache.node;
+part of mdlmustache;
 
 abstract class Node {
   Node(this.start, this.end);

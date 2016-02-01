@@ -1,7 +1,34 @@
-library mustache.scanner;
+part of mdlmustache;
 
-import 'template_exception.dart';
-import 'token.dart';
+const int _EOF = -1;
+const int _TAB = 9;
+const int _NEWLINE = 10;
+const int _RETURN = 13;
+const int _SPACE = 32;
+const int _EXCLAIM = 33;
+const int _QUOTE = 34;
+const int _APOS = 39;
+const int _HASH = 35;
+const int _AMP = 38;
+const int _PERIOD = 46;
+const int _FORWARD_SLASH = 47;
+const int _LT = 60;
+const int _EQUAL = 61;
+const int _GT = 62;
+const int _CARET = 94;
+
+const int _OPEN_MUSTACHE = 123;
+const int _CLOSE_MUSTACHE = 125;
+
+const int _A = 65;
+const int _Z = 90;
+const int _a = 97;
+const int _z = 122;
+const int _0 = 48;
+const int _9 = 57;
+
+const int _UNDERSCORE = 95;
+const int _MINUS = 45;
 
 class Lexer {
     Lexer(String source, this._templateName, String delimiters,
@@ -9,7 +36,6 @@ class Lexer {
         : _source = source,
             _lenient = lenient,
             _itr = source.runes.iterator {
-
         if (source == '') {
             _c = _EOF;
         }
@@ -111,6 +137,8 @@ class Lexer {
         }
         return _tokens;
     }
+
+    //- private -----------------------------------------------------------------------------------
 
     int _peek() => _c;
 
@@ -359,32 +387,3 @@ class Lexer {
     }
 }
 
-const int _EOF = -1;
-const int _TAB = 9;
-const int _NEWLINE = 10;
-const int _RETURN = 13;
-const int _SPACE = 32;
-const int _EXCLAIM = 33;
-const int _QUOTE = 34;
-const int _APOS = 39;
-const int _HASH = 35;
-const int _AMP = 38;
-const int _PERIOD = 46;
-const int _FORWARD_SLASH = 47;
-const int _LT = 60;
-const int _EQUAL = 61;
-const int _GT = 62;
-const int _CARET = 94;
-
-const int _OPEN_MUSTACHE = 123;
-const int _CLOSE_MUSTACHE = 125;
-
-const int _A = 65;
-const int _Z = 90;
-const int _a = 97;
-const int _z = 122;
-const int _0 = 48;
-const int _9 = 57;
-
-const int _UNDERSCORE = 95;
-const int _MINUS = 45;

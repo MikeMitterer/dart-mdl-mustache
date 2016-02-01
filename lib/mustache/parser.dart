@@ -1,12 +1,7 @@
-library mustache.parser;
-
-import 'node.dart';
-import 'template_exception.dart';
-import 'token.dart';
-import 'lexer.dart';
+part of mdlmustache;
 
 List<Node> parse(String source, bool lenient, String templateName, String delimiters) {
-    var parser = new Parser(source, templateName, delimiters, lenient: lenient);
+    final Parser parser = new Parser(source, templateName, delimiters, lenient: lenient);
     return parser.parse();
 }
 
@@ -36,24 +31,25 @@ class TagType {
 }
 
 class Parser {
-    Parser(String source, String templateName, String delimiters,
-        {lenient: false})
-        : _source = source,
-            _templateName = templateName,
-            _delimiters = delimiters,
-            _lenient = lenient,
-            _scanner =
-            new Lexer(source, templateName, delimiters, lenient: lenient);
-
     final String _source;
     final bool _lenient;
     final String _templateName;
     final String _delimiters;
     final Lexer _scanner;
     final List<SectionNode> _stack = <SectionNode>[];
+
     List<Token> _tokens;
     String _currentDelimiters;
     int _offset = 0;
+
+    Parser(String source, String templateName, String delimiters,
+        { lenient: false })
+        : _source = source,
+            _templateName = templateName,
+            _delimiters = delimiters,
+            _lenient = lenient,
+            _scanner =
+            new Lexer(source, templateName, delimiters, lenient: lenient);
 
     List<Node> parse() {
         _tokens = _scanner.scan();

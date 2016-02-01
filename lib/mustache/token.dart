@@ -1,4 +1,4 @@
-library mustache.token;
+part of mdlmustache;
 
 class TokenType {
   const TokenType(this.name);
