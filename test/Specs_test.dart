@@ -3,6 +3,7 @@
 // Test implemented by Georgios Valotasios.
 // See: https://github.com/valotas/mustache4dart
 
+@TestOn("chrome || vm")
 import 'package:test/test.dart';
 
 import 'dart:convert';

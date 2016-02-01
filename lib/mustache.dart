@@ -18,16 +18,40 @@ typedef Template PartialResolver(String templateName);
 
 typedef Object LambdaFunction(LambdaContext context);
 
-///// Use new Template(source) instead.
-//@deprecated
-//Template parse(String source, {bool lenient: false}) =>
-//    new Template(source, lenient: lenient);
-
-
 class MustacheMirrorsUsedAnnotation extends Reflectable {
     const MustacheMirrorsUsedAnnotation() : super(
+
+//        admitSubtypeCapability,
+        classifyCapability,
+        correspondingSetterQuantifyCapability,
+//        declarationsCapability,
+//        delegateCapability,
+        instanceInvokeCapability,
+
         invokingCapability,
-        reflectedTypeCapability
+
+//        libraryCapability,
+//        libraryDependenciesCapability,
+//        metadataCapability,
+        nameCapability,
+  //      newInstanceCapability,
+
+        reflectedTypeCapability,
+
+//        staticInvokeCapability,
+        subtypeQuantifyCapability
+//        superclassQuantifyCapability,
+//        topLevelInvokeCapability,
+//        typeAnnotationDeepQuantifyCapability,
+//        typeAnnotationQuantifyCapability,
+
+//        typeCapability,
+//        typeRelationsCapability,
+//        typingCapability,
+//        uriCapability
+
+        //invokingCapability,
+        //reflectedTypeCapability
     );
 }
 

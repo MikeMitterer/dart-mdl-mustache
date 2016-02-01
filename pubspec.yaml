@@ -1,19 +1,27 @@
 name: mdlmustache
 version: 0.2.5
 
-author: Greg Lowe <greg@vis.net.nz>
-description: Mustache template library
-homepage: https://github.com/xxgreg/mustache
+author: Mike Mitterer <office@mikemitterer.at>
+description: Mustache template library for MDL/Dart
+homepage: https://github.com/MikeMitterer/dart-mdl-mustache
 
 environment:
   sdk: '>=1.8.0 <2.0.0'
 
 dependencies:
-  reflectable: '^0.4.0'
+  reflectable: '^0.5.0'
 
   validate: ^1.0.0
 
 dev_dependencies:
   test: any
   grinder: any
+
+transformers:
+  - reflectable:
+      entry_points:
+        - web/main.dart
+        - test/Mustache_test.dart
+        - test/Parser_test.dart
+        - test/Specs_test.dart
 

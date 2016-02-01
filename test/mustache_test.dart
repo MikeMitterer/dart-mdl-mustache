@@ -1,3 +1,4 @@
+@TestOn("chrome || vm")
 import 'package:test/test.dart';
 
 import 'package:mdlmustache/mustache.dart';
