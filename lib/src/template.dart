@@ -1,6 +1,6 @@
 library mustache.template;
 
-import 'package:mustache/mustache.dart' as m;
+import 'package:mdlmustache/mustache.dart' as m;
 import 'node.dart';
 import 'parser.dart' as parser;
 import 'renderer.dart';

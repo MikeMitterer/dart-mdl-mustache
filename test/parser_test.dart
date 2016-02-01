@@ -1,23 +1,23 @@
 import 'package:unittest/unittest.dart';
 
-import 'package:mustache/src/node.dart';
-import 'package:mustache/src/parser.dart';
-import 'package:mustache/src/scanner.dart';
-import 'package:mustache/src/template_exception.dart';
-import 'package:mustache/src/token.dart';
+import 'package:mdlmustache/src/node.dart';
+import 'package:mdlmustache/src/parser.dart';
+import 'package:mdlmustache/src/lexer.dart';
+import 'package:mdlmustache/src/template_exception.dart';
+import 'package:mdlmustache/src/token.dart';
 
 main() {
   group('Scanner', () {
     test('scan text', () {
       var source = 'abc';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [new Token(TokenType.text, 'abc', 0, 3)]);
     });
 
     test('scan tag', () {
       var source = 'abc{{foo}}def';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.text, 'abc', 0, 3),
@@ -30,7 +30,7 @@ main() {
 
     test('scan tag whitespace', () {
       var source = 'abc{{ foo }}def';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.text, 'abc', 0, 3),
@@ -45,7 +45,7 @@ main() {
 
     test('scan tag sigil', () {
       var source = 'abc{{ # foo }}def';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.text, 'abc', 0, 3),
@@ -62,7 +62,7 @@ main() {
 
     test('scan tag dot', () {
       var source = 'abc{{ foo.bar }}def';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.text, 'abc', 0, 3),
@@ -79,7 +79,7 @@ main() {
 
     test('scan triple mustache', () {
       var source = 'abc{{{foo}}}def';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.text, 'abc', 0, 3),
@@ -92,7 +92,7 @@ main() {
 
     test('scan triple mustache whitespace', () {
       var source = 'abc{{{ foo }}}def';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.text, 'abc', 0, 3),
@@ -107,7 +107,7 @@ main() {
 
     test('scan tag with equals', () {
       var source = '{{foo=bar}}';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: true);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: true);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.openDelimiter, '{{', 0, 2),
@@ -118,7 +118,7 @@ main() {
 
     test('scan comment with equals', () {
       var source = '{{!foo=bar}}';
-      var scanner = new Scanner(source, 'foo', '{{ }}', lenient: false);
+      var scanner = new Lexer(source, 'foo', '{{ }}', lenient: false);
       var tokens = scanner.scan();
       expectTokens(tokens, [
         new Token(TokenType.openDelimiter, '{{', 0, 2),

@@ -1,7 +1,7 @@
 library mustache_test;
 
 import 'package:unittest/unittest.dart';
-import 'package:mustache/mustache.dart';
+import 'package:mdlmustache/mustache.dart';
 
 const MISMATCHED_TAG = 'Mismatched tag';
 const UNEXPECTED_EOF = 'Unexpected end of input';
