@@ -21,37 +21,29 @@ typedef Object LambdaFunction(LambdaContext context);
 class MustacheMirrorsUsedAnnotation extends Reflectable {
     const MustacheMirrorsUsedAnnotation() : super(
 
-//        admitSubtypeCapability,
-        classifyCapability,
-        correspondingSetterQuantifyCapability,
-//        declarationsCapability,
-//        delegateCapability,
-        instanceInvokeCapability,
-
+        // admitSubtypeCapability,
+        // classifyCapability,
+        // correspondingSetterQuantifyCapability,
+        // declarationsCapability,
+        // delegateCapability,
+        // instanceInvokeCapability,
         invokingCapability,
-
-//        libraryCapability,
-//        libraryDependenciesCapability,
-//        metadataCapability,
-        nameCapability,
-  //      newInstanceCapability,
-
-        reflectedTypeCapability,
-
-//        staticInvokeCapability,
-        subtypeQuantifyCapability
-//        superclassQuantifyCapability,
-//        topLevelInvokeCapability,
-//        typeAnnotationDeepQuantifyCapability,
-//        typeAnnotationQuantifyCapability,
-
-//        typeCapability,
-//        typeRelationsCapability,
-//        typingCapability,
-//        uriCapability
-
-        //invokingCapability,
-        //reflectedTypeCapability
+        // libraryCapability,
+        // libraryDependenciesCapability,
+        // metadataCapability,
+        // nameCapability,
+        // newInstanceCapability,
+        reflectedTypeCapability
+        // staticInvokeCapability,
+        // subtypeQuantifyCapability,
+        // superclassQuantifyCapability,
+        // topLevelInvokeCapability,
+        // typeAnnotationDeepQuantifyCapability,
+        // typeAnnotationQuantifyCapability,
+        // typeCapability,
+        // typeRelationsCapability,
+        // typingCapability,
+        // uriCapability
     );
 }
 
