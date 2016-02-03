@@ -36,7 +36,12 @@ class TagType {
     static const TagType openSection = const TagType('openSection');
     static const TagType openInverseSection = const TagType('openInverseSection');
     static const TagType closeSection = const TagType('closeSection');
+
+
+    /// The most basic tag type is the variable. A <code>{{name}}</code> tag in a basic template will
+    /// try to find the name key in the current context.
     static const TagType variable = const TagType('variable');
+
     static const TagType tripleMustache = const TagType('tripleMustache');
     static const TagType unescapedVariable = const TagType('unescapedVariable');
     static const TagType partial = const TagType('partial');

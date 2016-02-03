@@ -166,12 +166,11 @@ class Renderer extends Visitor {
     //- private -----------------------------------------------------------------------------------
 
     //TODO can probably combine Inv and Normal to shorten.
-    void _renderSection(SectionNode node) {
+    void _renderSection(final SectionNode node) {
         var value = resolveValue(node.name);
 
-        if (value == null) {
+        if (value == null || value == false) {
             // Do nothing.
-
         }
         else if (value is Iterable) {
             value.forEach((v) => _renderWithValue(node, v));
@@ -181,10 +180,6 @@ class Renderer extends Visitor {
         }
         else if (value == true) {
             _renderWithValue(node, value);
-        }
-        else if (value == false) {
-            // Do nothing.
-
         }
         else if (value == noSuchProperty) {
             if (!lenient) throw _error(
