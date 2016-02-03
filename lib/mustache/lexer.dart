@@ -31,17 +31,33 @@ const int _UNDERSCORE = 95;
 const int _MINUS = 45;
 
 class Lexer {
-    Lexer(String source, this._templateName, String delimiters,
-        {bool lenient: true})
+
+    final String _templateName;
+    final String _source;
+    final bool _lenient;
+
+    final Iterator<int> _itr;
+    int _offset = 0;
+    int _character = 0;
+
+    final List<Token> _tokens = new List<Token>();
+
+    // These can be changed by the change delimiter tag.
+    int _openDelimiter;
+    int _openDelimiterInner;
+    int _closeDelimiterInner;
+    int _closeDelimiter;
+
+    Lexer(final String source, this._templateName, final String delimiters, { final bool lenient: true })
         : _source = source,
             _lenient = lenient,
             _itr = source.runes.iterator {
         if (source == '') {
-            _c = _EOF;
+            _character = _EOF;
         }
         else {
             _itr.moveNext();
-            _c = _itr.current;
+            _character = _itr.current;
         }
 
         if (delimiters == null) {
@@ -64,26 +80,11 @@ class Lexer {
         }
     }
 
-    final String _templateName;
-    final String _source;
-    final bool _lenient;
-
-    final Iterator<int> _itr;
-    int _offset = 0;
-    int _c = 0;
-
-    final List<Token> _tokens = new List<Token>();
-
-    // These can be changed by the change delimiter tag.
-    int _openDelimiter;
-    int _openDelimiterInner;
-    int _closeDelimiterInner;
-    int _closeDelimiter;
-
     List<Token> scan() {
-        for (int c = _peek(); c != _EOF; c = _peek()) {
+        for (int character = _peek(); character != _EOF; character = _peek()) {
+
             // Scan text tokens.
-            if (c != _openDelimiter) {
+            if (character != _openDelimiter) {
                 _scanText();
                 continue;
             }
@@ -140,17 +141,17 @@ class Lexer {
 
     //- private -----------------------------------------------------------------------------------
 
-    int _peek() => _c;
+    int _peek() => _character;
 
     int _read() {
-        int c = _c;
+        int c = _character;
         _offset++;
-        _c = _itr.moveNext() ? _itr.current : _EOF;
+        _character = _itr.moveNext() ? _itr.current : _EOF;
         return c;
     }
 
-    String _readWhile(bool test(int charCode)) {
-        if (_c == _EOF) return '';
+    String _readWhile(bool test(final int charCode)) {
+        if (_character == _EOF) return '';
         int start = _offset;
         while (_peek() != _EOF && test(_peek())) {
             _read();
@@ -159,7 +160,7 @@ class Lexer {
         return _source.substring(start, end);
     }
 
-    _expect(int expectedCharCode) {
+    _expect(final int expectedCharCode) {
         int c = _read();
 
         if (c == _EOF) {
@@ -177,14 +178,14 @@ class Lexer {
         }
     }
 
-    _append(TokenType type, String value, int start, int end) =>
+    _append(final TokenType type,final String value,final int start,final int end) =>
         _tokens.add(new Token(type, value, start, end));
 
-    bool _isWhitespace(int c) =>
+    bool _isWhitespace(final int c) =>
         const [_SPACE, _TAB, _NEWLINE, _RETURN].contains(c);
 
     // Scan text. This adds text tokens, line end tokens, and whitespace
-    // tokens for whitespace at the begining of a line. This is because the
+    // tokens for whitespace at the beginning of a line. This is because the
     // mustache spec requires special handing of whitespace.
     void _scanText() {
         int start = 0;
@@ -235,14 +236,15 @@ class Lexer {
         TokenType token;
         String value;
 
-        bool isCloseDelimiter(int c) =>
-            (_closeDelimiterInner == null && c == _closeDelimiter) ||
+        bool isCloseDelimiter(int c) {
+            return (_closeDelimiterInner == null && c == _closeDelimiter) ||
                 (_closeDelimiterInner != null && c == _closeDelimiterInner);
+        }
 
-        for (int c = _peek(); c != _EOF && !isCloseDelimiter(c); c = _peek()) {
+        for (int character = _peek(); character != _EOF && !isCloseDelimiter(character); character = _peek()) {
             start = _offset;
 
-            switch (c) {
+            switch (character) {
                 case _HASH:
                 case _CARET:
                 case _FORWARD_SLASH:
@@ -251,7 +253,7 @@ class Lexer {
                 case _EXCLAIM:
                     _read();
                     token = TokenType.sigil;
-                    value = new String.fromCharCode(c);
+                    value = new String.fromCharCode(character);
                     break;
 
                 case _SPACE:

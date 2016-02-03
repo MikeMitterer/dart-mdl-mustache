@@ -11,6 +11,7 @@ part 'mustache/node.dart';
 part 'mustache/parser.dart';
 part 'mustache/renderer.dart';
 part 'mustache/template.dart';
+part 'mustache/TagType.dart';
 part 'mustache/TemplateException.dart';
 part 'mustache/token.dart';
 

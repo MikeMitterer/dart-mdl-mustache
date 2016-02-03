@@ -25,3 +25,6 @@ transformers:
         - test/Parser_test.dart
         - test/Specs_test.dart
 
+  - test/pub_serve:
+      $include: test/**_test{.*,}.dart
+

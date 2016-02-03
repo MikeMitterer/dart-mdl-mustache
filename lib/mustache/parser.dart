@@ -5,30 +5,7 @@ List<Node> parse(String source, bool lenient, String templateName, String delimi
     return parser.parse();
 }
 
-class Tag {
-    Tag(this.type, this.name, this.start, this.end);
 
-    final TagType type;
-    final String name;
-    final int start;
-    final int end;
-}
-
-class TagType {
-    const TagType(this.name);
-
-    final String name;
-
-    static const TagType openSection = const TagType('openSection');
-    static const TagType openInverseSection = const TagType('openInverseSection');
-    static const TagType closeSection = const TagType('closeSection');
-    static const TagType variable = const TagType('variable');
-    static const TagType tripleMustache = const TagType('tripleMustache');
-    static const TagType unescapedVariable = const TagType('unescapedVariable');
-    static const TagType partial = const TagType('partial');
-    static const TagType comment = const TagType('comment');
-    static const TagType changeDelimiter = const TagType('changeDelimiter');
-}
 
 class Parser {
     final String _source;

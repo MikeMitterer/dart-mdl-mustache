@@ -93,7 +93,7 @@ class LambdaContext {
     }
 
     /// Lookup the value of a variable in the current context.
-    Object lookup(String variableName) {
+    Object lookup(final String variableName) {
         _checkClosed();
         return _renderer.resolveValue(variableName);
     }
