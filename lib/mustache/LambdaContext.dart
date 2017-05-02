@@ -6,11 +6,11 @@ part of mdlmustache;
 class LambdaContext {
     final Node _node;
     final Renderer _renderer;
-    final bool _isSection;
+    //final bool _isSection;
     bool _closed = false;
 
-    LambdaContext(this._node, this._renderer, {bool isSection: true})
-        : _isSection = isSection;
+    LambdaContext(this._node, this._renderer, { bool isSection: true });
+        //: _isSection = isSection;
 
     void close() {
         _closed = true;

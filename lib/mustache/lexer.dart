@@ -20,6 +20,8 @@ const int _CARET = 94;
 const int _OPEN_MUSTACHE = 123;
 const int _CLOSE_MUSTACHE = 125;
 
+const int _PIPE = 124;
+
 const int _A = 65;
 const int _Z = 90;
 const int _a = 97;

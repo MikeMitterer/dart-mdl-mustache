@@ -376,19 +376,19 @@ nodeEqual(a, b) {
         a.end == b.end;
   } else if (a is VariableNode) {
     return a is VariableNode &&
-        a.name == b.name &&
+        a.name == b.client_name &&
         a.escape == b.escape &&
         a.start == b.start &&
         a.end == b.end;
   } else if (a is SectionNode) {
     return a is SectionNode &&
-        a.name == b.name &&
+        a.name == b.client_name &&
         a.delimiters == b.delimiters &&
         a.inverse == b.inverse &&
         a.start == b.start &&
         a.end == b.end;
   } else if (a is PartialNode) {
-    return a is PartialNode && a.name == b.name && a.indent == b.indent;
+    return a is PartialNode && a.name == b.client_name && a.indent == b.indent;
   } else {
     return false;
   }

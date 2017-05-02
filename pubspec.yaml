@@ -9,7 +9,7 @@ environment:
   sdk: '>=1.8.0 <2.0.0'
 
 dependencies:
-  reflectable: '^0.5.0'
+  reflectable: '^1.0.0'
 
   validate: ^1.0.0
 
@@ -21,10 +21,10 @@ transformers:
   - reflectable:
       entry_points:
         - web/main.dart
-        - test/Mustache_test.dart
-        - test/Parser_test.dart
-        - test/Specs_test.dart
-
-  - test/pub_serve:
-      $include: test/**_test{.*,}.dart
+#        - test/Mustache_test.dart
+#        - test/Parser_test.dart
+#        - test/Specs_test.dart
+#
+#  - test/pub_serve:
+#      $include: test/**_test{.*,}.dart
 

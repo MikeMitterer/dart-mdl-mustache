@@ -1,4 +1,4 @@
-import 'package:mustache/mustache.dart';
+import 'package:mdlmustache/mustache.dart';
 
 main() {
   var partial = new Template('{{ foo }}', name: 'partial');

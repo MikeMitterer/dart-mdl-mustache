@@ -3,7 +3,7 @@
 library mdlmustache;
 
 import 'package:reflectable/reflectable.dart';
-import 'package:validate/validate.dart';
+//import 'package:validate/validate.dart';
 
 part 'mustache/LambdaContext.dart';
 part 'mustache/lexer.dart';
@@ -22,29 +22,30 @@ typedef Object LambdaFunction(LambdaContext context);
 class MustacheMirrorsUsedAnnotation extends Reflectable {
     const MustacheMirrorsUsedAnnotation() : super(
 
-        // admitSubtypeCapability,
-        // classifyCapability,
-        // correspondingSetterQuantifyCapability,
-        // declarationsCapability,
-        // delegateCapability,
-        // instanceInvokeCapability,
-        invokingCapability,
-        // libraryCapability,
-        // libraryDependenciesCapability,
-        // metadataCapability,
-        // nameCapability,
-        // newInstanceCapability,
-        reflectedTypeCapability
-        // staticInvokeCapability,
-        // subtypeQuantifyCapability,
-        // superclassQuantifyCapability,
-        // topLevelInvokeCapability,
-        // typeAnnotationDeepQuantifyCapability,
-        // typeAnnotationQuantifyCapability,
-        // typeCapability,
-        // typeRelationsCapability,
-        // typingCapability,
-        // uriCapability
+admitSubtypeCapability,
+classifyCapability,
+correspondingSetterQuantifyCapability,
+declarationsCapability,
+delegateCapability,
+instanceInvokeCapability,
+   invokingCapability,
+libraryCapability,
+libraryDependenciesCapability,
+// metadataCapability,
+// nameCapability,
+// newInstanceCapability,
+reflectedTypeCapability,
+//staticInvokeCapability,
+        
+// subtypeQuantifyCapability,
+// superclassQuantifyCapability,
+// topLevelInvokeCapability,
+// typeAnnotationDeepQuantifyCapability,
+// typeAnnotationQuantifyCapability,
+// typeCapability,
+// typeRelationsCapability,
+// typingCapability,
+// uriCapability
     );
 }
 

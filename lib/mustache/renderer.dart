@@ -150,6 +150,8 @@ class Renderer extends Visitor {
         var object = noSuchProperty;
         for (var o in _stack.reversed) {
             object = _getNamedProperty(o, parts[0]);
+
+            //TODO: Breaks objects defining a operator==
             if (object != noSuchProperty) {
                 break;
             }
