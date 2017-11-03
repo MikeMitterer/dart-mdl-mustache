@@ -114,10 +114,23 @@ void main() {
     final ClassMirror cmAnimal = imAnimal.type;
     log("Animal (Dog??) make noise via 'invoke': ${imAnimal.invoke("makeNoise", [])}");
 
-    final Vehicle vehicle = new Car();
-    final InstanceMirror imVehicle = rpackagetest.reflect(vehicle);
-    final ClassMirror cmVehicle = imVehicle.type;
+    Vehicle vehicle = new Car();
+    InstanceMirror imVehicle = rpackagetest.reflect(vehicle);
+    ClassMirror cmVehicle = imVehicle.type;
     log("/Vehicle (Car??) #of wheels 'invoke': ${imVehicle.invoke("wheels", [])}");
+
+    log("Car metadata:", cmVehicle.metadata);
+
+    log("Car has 'thisIsACar'-Annotation",[
+        (cmVehicle.metadata.where(
+                (final Object obj) => obj is ThisIsACarAnnotation).toList().isNotEmpty ? "yes" : "no")]);
+
+    vehicle = new MotorBike();
+    imVehicle = rpackagetest.reflect(vehicle);
+    cmVehicle = imVehicle.type;
+    log("MotorBike has 'thisIsACar'-Annotation",[
+        (cmVehicle.metadata.where(
+                (final Object obj) => obj is ThisIsACarAnnotation).toList().isNotEmpty ? "yes" : "no")]);
 
 }
 

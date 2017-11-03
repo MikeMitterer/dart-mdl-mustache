@@ -16,6 +16,11 @@ class ReflectionTestAnotherPackage extends Reflectable {
 
 const ReflectionTestAnotherPackage rpackagetest = const ReflectionTestAnotherPackage();
 
+class ThisIsACarAnnotation {
+    const ThisIsACarAnnotation();
+}
+const ThisIsACarAnnotation thisIsACar = const ThisIsACarAnnotation();
+
 @rpackagetest
 abstract class Vehicle {
     int wheels();
@@ -27,7 +32,7 @@ class MotorBike extends Vehicle {
   int wheels() => 2;
 }
 
-@rpackagetest
+@rpackagetest @thisIsACar
 class Car extends Vehicle {
     @override
     int wheels() => 4;

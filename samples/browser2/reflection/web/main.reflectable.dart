@@ -366,7 +366,7 @@ final _data = {
             0,
             2,
             const <int>[],
-            const <Object>[prefix1.rpackagetest],
+            const <Object>[prefix1.rpackagetest, prefix1.thisIsACar],
             null)
       ],
       <m.DeclarationMirror>[
