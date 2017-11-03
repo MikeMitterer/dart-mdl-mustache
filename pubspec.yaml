@@ -9,7 +9,9 @@ environment:
   sdk: '>=1.8.0 <2.0.0'
 
 dependencies:
-  reflectable: '^1.0.0'
+  reflectable:
+    path: /Volumes/DataElCapitan/SubSystem/Downloads/reflectable-use_build/reflectable
+    # '^1.0.0'
 
   validate: ^1.0.0
 
