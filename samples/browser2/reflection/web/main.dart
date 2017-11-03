@@ -117,7 +117,7 @@ void main() {
     final Vehicle vehicle = new Car();
     final InstanceMirror imVehicle = rpackagetest.reflect(vehicle);
     final ClassMirror cmVehicle = imVehicle.type;
-    log("Vehicle (Car??) #of wheels 'invoke': ${imVehicle.invoke("wheels", [])}");
+    log("/Vehicle (Car??) #of wheels 'invoke': ${imVehicle.invoke("wheels", [])}");
 
 }
 

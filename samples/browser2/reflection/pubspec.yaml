@@ -34,6 +34,6 @@ transformers:
 #    # formatted: true # Optional.
 #
 
-web:
-  compiler:
-    debug: dartdevc
+#web:
+#  compiler:
+#    debug: dartdevc
